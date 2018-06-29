@@ -3,7 +3,7 @@ pragma solidity ^0.4.24;
 
 import "./SafeMath.sol";
 
-contract AuctionStartBuyPrice {
+contract Auction {
     
     // OpenZeppelin SafeMath library
     using SafeMath for uint256;
