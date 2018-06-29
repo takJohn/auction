@@ -79,7 +79,6 @@ contract Auction {
         require(!ended, "Auction has ended.");
         require(now >= auctionEndTime, "Auction end time has not been reached.");
         ended = true;
-        
         pendingWithdrawals[owner] = highestBid;
         emit AuctionEnded(highestBidder, highestBid);
     }
