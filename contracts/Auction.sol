@@ -1,4 +1,3 @@
-
 pragma solidity ^0.4.24;
 
 import "./SafeMath.sol";
@@ -10,10 +9,13 @@ contract Auction {
     
     // Variables
     address public owner;
-    string public itemDescription;
+    string public itemName;
+    enum Conditions {BrandNew, LikeNew, VeryGood, Good, Acceptable}
+    Conditions public condition;
     uint public auctionEndTime;
     uint public startPrice;
     uint public buyPrice;
+    uint public bidCount;
     address public highestBidder;
     uint public highestBid;
     bool public ended;
@@ -32,7 +34,7 @@ contract Auction {
         _;
     }
     
-    // Checks that auction is active
+    // Checks that the auction is active
     modifier isActive() {
         require(!ended, "Auction has already ended.");
         require(now < auctionEndTime, "Auction end time has already been reached.");
@@ -40,17 +42,18 @@ contract Auction {
     }
     
     // Seting up the auction
-    constructor(string _itemDescription, uint _startPrice, uint _buyPrice, uint _durationMinutes) public {
+    constructor(string _itemName, Conditions _condition, uint _startPrice, uint _buyPrice, uint _durationMinutes) public {
         
         require(_durationMinutes > 0, "Duration must be above 0.");
         require(_startPrice >= 0 && _buyPrice > 0, "Start and buy price must be above 0."); 
         require(_startPrice < _buyPrice, "Buy price must be higher than the start price.");
         owner = msg.sender;
-        itemDescription = _itemDescription;
+        itemName = _itemName;
+        condition = _condition;
         startPrice = _startPrice;
         buyPrice = _buyPrice;
         auctionEndTime = now + (_durationMinutes * 1 minutes);
-        emit AuctionStarted(itemDescription);
+        emit AuctionStarted(itemName);
     }
     
     // Placing a bid
@@ -59,19 +62,22 @@ contract Auction {
         require(msg.sender != owner, "Bidding on your own items is NOT allowed.");
         require(msg.value >= startPrice && msg.value > highestBid, "Bid price is too low.");
         
+        bidCount++;
+        
         if(highestBid != 0) {
             pendingWithdrawals[highestBidder] = pendingWithdrawals[highestBidder].add(highestBid);
         }
         
+        highestBidder = msg.sender;
+        highestBid = msg.value;
+        
         if(msg.value >= buyPrice) {
-            highestBidder = msg.sender;
             highestBid = buyPrice;
+            pendingWithdrawals[highestBidder] = pendingWithdrawals[highestBidder].add(msg.value - buyPrice);
             itemBought();
-        } else {
-            highestBidder = msg.sender;
-            highestBid = msg.value;
-            emit HighestBidIncreased(highestBidder, highestBid);
         }
+
+        emit HighestBidIncreased(highestBidder, highestBid);
     }
     
     // End the auction
