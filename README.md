@@ -1,5 +1,5 @@
 # Decentralized Auction
-_screenshot of dapp._
+_A screenshot of the dapp._
 
 ![ScreenShot](https://github.com/takJohn/decentralized-auction/blob/master/dBay.png)
 
