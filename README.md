@@ -1,5 +1,5 @@
 # Decentralized Auction
-_A decentralized auction on Ethereum._
+_screenshot of the decentralized application._
 
 ![ScreenShot](https://github.com/takJohn/decentralized-auction/blob/master/dBay.png)
 
@@ -55,7 +55,7 @@ Make sure the MetaMask plugin is enabled first before following these steps.
 
 1. Click on the **MetaMask** icon.
 2. Select **Restore from seed phrase** .
-3. Copy the mnemonic from Ganache and paste it into the "Wallet Seed" box.
+3. Copy the mnemonic from Ganache and paste it into the **Wallet Seed** box.
 4. Enter a password and click **OK**.
 5. Click on the **Main Network** menu and select **Custom RPC**.
 6. Enter `http://127.0.0.1:7545` as the *New RPC URL* and then click **Save**.
