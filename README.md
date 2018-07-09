@@ -1,7 +1,7 @@
 # Decentralized Auction
 _A decentralized auction on Ethereum._
 
-[[https://github.com/takJohn/decentralized-auction/blob/master/dBay.png|alt=dBay screenshot]]
+![ScreenShot](https://github.com/takJohn/decentralized-auction/blob/master/dBay.png)
 
 
 ## Description
