@@ -25,7 +25,7 @@ To run and interact with the dapp, you'll need to install the dependencies below
 ## Running the Dapp
 
 #### 1. Open Ganache
-To run a local Ethereum blockchain, launch Ganache with the default rpc address `http://127.0.0.1:7545`.
+To run a local Ethereum blockchain, launch Ganache with the default rpc address `http://127.0.0.1:7545`
 
 - Mac: open ganache from the applications directory.
 - Windows: open either **PowerShell** or **Command Prompt**, enter `cd ganache` and then `npm start`
