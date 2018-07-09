@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Auction</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+    <link href="css/auction.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <!-- Main container -->
+    <div class="container-1">
+
+      <div id="loader">Loading...</div>
+       
+      <!-- Main content --> 
+      <div id="content">
+
+        <!-- Header section -->
+        <div id="status">Auction is live!</div> 
+        <div id="item-name" class="dark-label">Item Name</div>
+        
+        <div>
+          <label class="light-label">Condition: </label>
+          <span id="condition" class="dark-label">Condition</span>
+        </div>
+
+        <!-- Time left section -->
+        <div class="container-2">
+
+          <label id="time-left" class="light-label">Time left: </label>
+
+          <div id="timer">
+            <span id="day" class="digits">--</span><span class="digit-counter">d</span>
+            <span id="hour" class="digits">--</span><span class="digit-counter">h</span>
+            <span id="minute" class="digits">--</span><span class="digit-counter">m</span>
+            <span id="second" class="digits">--</span><span class="digit-counter">s</span>
+          </div>
+
+        </div>
+
+        <!-- Bidding section -->
+        <div id="bidding-section">
+
+          <!-- Bidding information (visible to both bidders and sellers) -->
+          <div class="container-2">
+            <label id="highest-bidder" class="dark-label">Highest Bidder: </label>
+            <span id="highest-bidder-address" class="address dark-label">0x0000000000000000000000000000000000000000</span>
+          </div>
+          
+          <div class="container-2">
+            <label id="current-bid" class="dark-label">Starting Bid: </label>
+            <span id="current-price" class="dark-label">-</span>
+            <span id="bid-count">Bid Count</span>
+          </div>
+          
+          <!-- Bidding option (only visible to bidders) -->
+          <div id="bidding-options" >
+
+            <div class="container-2">
+              <div id="bid-input-field">
+                <input type="number" id="bid-amount" placeholder="Enter your bid in ether">
+                <i class="far fa-keyboard" aria-hidden="true"></i>
+              </div>
+              <div class="btn-group"><button id="place-bid-btn" onclick="App.placeBid()">Place Bid</button></div>
+            </div>  
+
+            <div class="container-2">
+              <span id="buy-price" class="light-label">Buying Price</span>
+              <div class="btn-group"><button id="buy-now-btn" onclick="App.buyNow()">Buy Now</button></div>
+            </div>
+
+            <div class="container-2">
+              <span id="withdraw" class="light-label">Withdraw previously locked funds</span>
+              <div class="btn-group"><button class="withdraw-funds-btn" onclick="App.withdraw()" disabled>Withdraw</button></div>
+            </div>
+          </div>
+
+        </div> <!-- End of bidding section -->
+
+        <!-- Admin section (only visible to sellers) -->
+        <div id="auction-admin">
+          <div class="admin-options">
+            <button id="cancel-auction-btn" onclick="App.cancelAuction()">Cancel Auction</button>
+            <button id="end-auction-btn" onclick="App.manualEndAuction()" disabled>End Auction</button>
+            <button class="withdraw-funds-btn" onclick="App.withdraw()" disabled>Withdraw</button>
+            <p>Bidding options unavailable to seller of the item.</p>
+          </div>
+        </div>
+
+        <!-- Account section (address of the current active user) -->
+        <div id="account">
+          <label class="light-label">Your account: </label>
+          <span id="account-address" class="address dark-label"></span>
+        </div>
+
+      </div>  <!-- End of main content --> 
+
+    </div> <!-- End of main container -->
+
+        <!-- The Modal -->
+        <div id="low-bid-modal" class="low-bid">
+
+          <!-- Modal content -->
+          <div class="low-bid-content">
+            <span class="close">&times;</span>
+            <h2>Bid Too Low</h2>
+            <p>Please increase your bidding price and try again.</p>
+          </div>
+        </div>
+
+    <!-- More scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
