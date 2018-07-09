@@ -8,7 +8,7 @@ _A screenshot of the dapp._
 A decentralized application for auctioning items on the Ethereum blockchain. Features of the dapp include the following:
 
 * Setting a *start price* and *end price* of an item.
-* Specify the duration of the auction (in minutes.)
+* Specify the duration of the auction (in minutes).
 * Immediately withdraw funds after the auction has ended.
 * Users bidding over the buy price are refunded the difference.
 
@@ -17,7 +17,7 @@ A decentralized application for auctioning items on the Ethereum blockchain. Fea
 To run and interact with the dapp, you'll need to install the dependencies below. Click on the links for further instructions.
 
 - [Node.js](https://nodejs.org/) - requires the npm package manager that comes with Node.js.
-- [Truffle](https://truffleframework.com/) - tool for deploying smart contracts on the blockchain.
+- [Truffle](https://truffleframework.com/) - tool for developing and deploying smart contracts on the blockchain.
 - [Ganache](http://truffleframework.com/ganache/) - to run a personal Ethereum blockchain.
 - [MetaMask](https://metamask.io/) - to interact with the Ethereum blockchain via a web browser.
 
@@ -25,7 +25,7 @@ To run and interact with the dapp, you'll need to install the dependencies below
 ## Running the Dapp
 
 #### 1. Open Ganache
-To run a local Ethereum blockchain, launch Ganache with the default rpc address <http://127.0.0.1:7545>.
+To run a local Ethereum blockchain, launch Ganache with the default rpc address `http://127.0.0.1:7545`.
 
 - Mac: open ganache from the applications directory.
 - Windows: open either **PowerShell** or **Command Prompt**, enter `cd ganache` and then `npm start`
@@ -48,7 +48,7 @@ Run the light-server to view the application inside a browser.
 ```
 $ npm run dev
 ```
-This should open up your browser and automatically direct it to <http://localhost:3000/> - if it doesn't then just fire up your browser and type in the address manually. The browser should now be displaying the *loading* page. To view the auction interface, you'll need to log into your MetaMask account and refresh the page.
+This should open up your browser and automatically direct it to `http://localhost:3000/` - if it doesn't then just fire up your browser and type in the address manually. The browser should now be displaying the *loading* page. To view the auction interface, you'll need to log into your MetaMask account and refresh the page.
 
 #### 3. Using MetaMask
 Make sure the MetaMask plugin is enabled first before following these steps.
