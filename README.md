@@ -101,7 +101,7 @@ This is an issue with running on a private network and occurs when the blockchai
 If a MetaMask transaction window doesn't appear when making a submission to the page then it's likely that a MetaMask pop-up already exists and needs to be closed first in order to proceed.
 
 #### Page not updating
-It should only take a few seconds when making any kind of submission on the page. Occasionally events will stop registering and the browser will become stuck on the *loading page*, in which case try restarting your web browser.
+It should only take a few seconds when making any kind of submission on the page. Occasionally events will stop registering and the browser will become stuck or out of sync, unfortunately this is a known bug with MetaMask and you may have to restart Ganache as well as your browser.
 
 ## Testing
 The test script **test/auction.js** contains a bidding scenario where multiple parties are bidding all the way up to the item finally being bought. To run the script, you need to open up a terminal or shell window and change to the directory **decentralized-auction** then execute `truffle test`
